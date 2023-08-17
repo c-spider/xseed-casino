@@ -4,73 +4,62 @@ import {
   } from '@reduxjs/toolkit';
   
   const initialState = {
+    loaded: false,
+    currentRound: {},
+    roundList: [],
+    comment: "Running",
+    endTime: new Date(),
+    ticketPrice: "1000000000000000000",
+    totalPrize: 1,
+    roundId: 1,
+    isRunning: false,
     isOverlay: false,
-    isSpinner: false,
-    isWalletConnector: false,
-    isCryptoPayment: false,
-    isPaypalPayment: false,
+    lotteryPrice: "1.00",
+    ticketCount: 0,
+    rewardRule: [5, 2 ,5 , 8 , 15, 20, 50, 5]
   };
   
   export const utilSlice = createSlice({
     name: 'util',
     initialState,
     reducers: {
-      
-      showSpinner: (state) => {
-        state.isOverlay = true;
-        state.isSpinner = true;
+      setRoundList: (state, action) => {
+        state.roundList = action.payload['roundList'];
       },
 
-      hideSpinner: (state) => {
-        state.isOverlay = false;
-        state.isSpinner = false;
-      },
-
-      showOverlay: (state) => {
+      showOverlay: (state, action) => {
         state.isOverlay = true;
+        state.comment = action.payload;
       },
 
       hideOverlay: (state) => {
         state.isOverlay = false;
       },
 
-      showWalletConnector: (state) => {
-        state.isWalletConnector = true;
+      setRoundStatus: (state, action) => {
+        state.currentRound = action.payload.currentRound;
+        state.endTime = action.payload.endTime;
+        state.roundId = action.payload.roundId;
+        state.isRunning = action.payload.isRunning;
+        state.ticketPrice = action.payload.ticketPrice;
+        state.totalPrize = action.payload.totalPrize;
+        state.lotteryPrice = action.payload.lotteryPrice;
+        state.ticketCount = action.payload.ticketCount;
+        state.rewardRule = action.payload.rewardRule;
       },
 
-      hideWalletConnector: (state) => {
-        state.isWalletConnector = false;
+      setLoaded: (state) => {
+        state.loaded = true;
       },
-
-      showCryptoPayment: (state) => {
-        state.isCryptoPayment = true;
-      },
-
-      hideCryptoPayment: (state) => {
-        state.isCryptoPayment = false;
-      },
-
-      showPaypalPayment: (state) => {
-        state.isPaypalPayment = true;
-      },
-
-      hidePaypalPayment: (state) => {
-        state.isPaypalPayment = false;
-      }
     },
   });
   // Here we are just exporting the actions from this slice, so that we can call them anywhere in our app.
   export const {
-    showSpinner,
-    hideSpinner,
+    setRoundList,
     showOverlay,
     hideOverlay,
-    showWalletConnector,
-    hideWalletConnector,
-    showCryptoPayment,
-    hideCryptoPayment,
-    showPaypalPayment,
-    hidePaypalPayment,
+    setRoundStatus,
+    setLoaded
   } = utilSlice.actions;
   
   // exporting the reducer here, as we need to add this to the store

@@ -6,6 +6,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      scrollbar: ['dark'],
       colors: {
         'primary': '#be0c6a',
       },
@@ -19,5 +20,6 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }

@@ -2,7 +2,6 @@ import { faEnvelope, faKey, faMailBulk, faPhone, faUser } from "@fortawesome/fre
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { showWalletConnector } from "store/slices/utilSlice";
 
 export default function Auth() {
     const dispatch = useDispatch()
@@ -67,7 +66,7 @@ export default function Auth() {
                             <div className="flex justify-center items-center">
                                 <div className="h-[50px] flex items-center">
                                     <button className=" bg-[#282454] hover:bg-[#6639E4] opacity-80 hover:opacity-100 mr-[10px] hover:px-[36px] hover:h-[45px] h-[50px] rounded-full px-[40px] text-[white] transition-all duration-150"
-                                        onClick={()=> {alert(10), dispatch(showWalletConnector())}}
+                                        onClick={()=> {alert(10)}}
                                     > Connect Wallet </button>
                                 </div>
                                 <div className="h-[50px] flex items-center">

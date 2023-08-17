@@ -8,24 +8,25 @@ import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, polygon } from 'wagmi/chains'
 
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 const projectId = process.env.NEXT_PUBLIC_ID
 const xseed_chain = {
-  id: 1,
-  network: 'MetaXSeed',
-  name: process.env.DEFAULT_CHAINNAME,
+  id: 422286,
+  network: 'MetaXSeed Mainnet',
+  name: 'MetaXSeed',
   nativeCurrency: { name: 'XSEED', symbol: 'XSEED', decimals: 18 },
   rpcUrls: {
-    alchemy: { http: [Array], webSocket: [Array] },
-    infura: { http: [Array], webSocket: [Array] },
-    default: { http: [Array] },
-    public: { http: [Array] }
+    default: { http: [ "https://mainnet-rpc.xseedscan.io" ] },
+    public: { http: [ "https://mainnet-rpc.xseedscan.io" ] },
   },
   blockExplorers: {
-    default: { name: 'XSDSCAN', url: process.env.DEFAULT_BLOCKCHAIN_EXPLORER }
+    default: { name: 'XSEED SCAN', url: "http://explorer.xseedscan.io" }
   },
 }
-console.log(JSON.stringify(mainnet))
-const chains = [mainnet]
+// console.log(JSON.stringify(mainnet))
+const chains = [xseed_chain]
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
 const wagmiConfig = createConfig({
   autoConnect: true,
@@ -35,13 +36,13 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
 function MyApp({ Component, pageProps }) {
-
   return (
     <Provider store={store}>
       <WagmiConfig config={wagmiConfig}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        <ToastContainer />
       </WagmiConfig>
       
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
