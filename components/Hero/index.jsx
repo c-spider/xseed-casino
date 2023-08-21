@@ -16,13 +16,13 @@ export default function Hero() {
                 </div>
 
                 <div className="flex w-full justify-center mt-[2rem]">
-                    <div className=" max-w-[30%]">
+                    <div className=" max-w-[30%] hidden md:block">
                         <Image src="/images/2.png" alt="" width={1275} height={1096} />
                     </div>
                     <div className=" max-w-[30%]">
                         <Image src="/images/3.png" alt="" width={1275} height={1096} />
                     </div>
-                    <div className=" max-w-[30%]">
+                    <div className=" max-w-[30%] hidden md:block">
                         <Image src="/images/4.png" alt="" width={1275} height={1096} />
                     </div>
                 </div>

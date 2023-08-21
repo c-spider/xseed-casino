@@ -7,8 +7,8 @@ const db = require("./models/_index");
 const { start } = require('repl');
 
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = 'localhost'
-const port = 3000
+const hostname = '85.215.166.243'
+const port = 8080
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()

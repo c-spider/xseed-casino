@@ -65,7 +65,7 @@ export default function Header() {
         if(loaded == false) {
             setTimeout(() => {
                 dispatch(setLoaded());
-            }, 1000)
+            }, 1500)
         }
     }
 
@@ -100,7 +100,7 @@ export default function Header() {
         <div className='flex flex-col z-30 fixed w-full'>
             <div className={"bg-[#000000a0] backdrop-blur-md w-full top-0 flex justify-center py-[10px] drop-shadow-xl xl:px-[12rem] md:px-[5rem] px-[3rem]"}>
                 <div className='grow flex justify-between items-center px-[24px]'>
-                    <div className='flex items-center'>
+                    <div className='w-full flex items-center justify-center md:justify-start'>
                         <div className='flex justify-center items-center transition-all duration-300'>
                             <Image
                                 src='/images/xseed.png'

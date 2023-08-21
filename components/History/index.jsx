@@ -184,9 +184,7 @@ export default function History() {
             const args = [LOTTERY_TOKEN, pendingList.map((item) => item.value)];
             const res = await runSmartContract(lotteryContract, "buy", 0, args)
             toast.success("Successfully purchased");
-            checkApproved();
             dispatch(hideOverlay());
-            openBuyModal(false);
             setPendingList([]);
             return;
         } catch (e) {

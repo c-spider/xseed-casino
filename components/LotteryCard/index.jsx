@@ -199,11 +199,15 @@ export default function LotteryCard({ data, isOpen, hasPending }) {
             const web3 = new Web3(Web3.givenProvider);
             const lotteryContract = new web3.eth.Contract(LOTTERY_ABI, LOTTERY_ADDRESS);
 
-            const { success, gas, message } = await estimateGas(lotteryContract, "buy", 0, [LOTTERY_TOKEN, [123456, 123456]]);
+            const _values = [];
+            for(let i = 0 ;i < ticketCount; i++)
+                _values.push(123456);
+
+            const { success, gas, message } = await estimateGas(lotteryContract, "buy", 0, [LOTTERY_TOKEN, _values]);
 
             if (!success) {
                 const m = decodeError(message);
-                toast.error("Transaction Failed" + m);
+                toast.error("Estimage gas: Transaction Failed" + m);
                 return;
             }
 
@@ -402,12 +406,12 @@ export default function LotteryCard({ data, isOpen, hasPending }) {
                 <div className="fixed w-[100vw] h-[100vh] top-0 left-0 flex justify-center items-center backdrop-blur-md z-50"
                     onClick={() => { openBuyModal(false) }}
                 >
-                    <div className="bg-[#282828a0] rounded-[1rem] flex flex-col p-[1rem] border-[5px] border-[#ffffff60] min-w-[25rem]"
+                    <div className="bg-[#282828a0] rounded-[1rem] flex flex-col p-[1rem] border-[5px] border-[#ffffff60] min-w-[320px]"
                         onClick={(e) => { e.stopPropagation() }}
                     >
                         <div className="flex justify-between items-center text-white mb-[0.5rem] border-b-[1px] border-b-[gray]">
                             <p className="text-[1.5rem]"> Buy Tickets </p>
-                            <button className="">
+                            <button className="" onClick={() => { openBuyModal(false) }}>
                                 <FontAwesomeSvgIcon icon={faClose} width={16} height={16} />
                             </button>
                         </div>

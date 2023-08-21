@@ -52,16 +52,16 @@ export default function CountDown() {
                     <Image alt="" src="/images/buybtn.png" width={1315} height={417} />
                 </button>
             </div>
-            <div className="flex mt-[3rem] justify-center font-bold text-[2rem] text-white">
-                <div className="w-[10rem] md:w-[15rem] mx-[1rem] h-[7rem] border-[5px] rounded-[1rem] border-primary flex flex-col justify-center items-center">
+            <div className="flex flex-col md:flex-row mt-[3rem] justify-center items-center font-bold text-[2rem] text-white">
+                <div className="w-[calc(100%-150px)] md:w-[10rem] md:w-[15rem] m-[1rem] h-[7rem] border-[5px] rounded-[1rem] border-primary flex flex-col justify-center items-center">
                     <p> {duration?.days} </p>
                     <p> DAYS </p>
                 </div>
-                <div className="w-[10rem] md:w-[15rem] mx-[1rem] h-[7rem] border-[5px] rounded-[1rem] border-primary flex flex-col justify-center items-center">
+                <div className="w-[calc(100%-150px)] md:w-[10rem] md:w-[15rem] m-[1rem] h-[7rem] border-[5px] rounded-[1rem] border-primary flex flex-col justify-center items-center">
                     <p> {duration?.hours} </p>
                     <p> Hours </p>
                 </div>
-                <div className="w-[10rem] md:w-[15rem] mx-[1rem] h-[7rem] border-[5px] rounded-[1rem] border-primary flex flex-col justify-center items-center">
+                <div className="w-[calc(100%-150px)] md:w-[10rem] md:w-[15rem] m-[1rem] h-[7rem] border-[5px] rounded-[1rem] border-primary flex flex-col justify-center items-center">
                     <p> {duration?.minutes} </p>
                     <p> Mins </p>
                 </div>
